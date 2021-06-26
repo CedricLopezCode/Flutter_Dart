@@ -88,23 +88,35 @@ class BasicsPage extends StatelessWidget{
 class Contenu extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget> [
-        //ContainerWidget(),
-        ColumnWidget(),
-        RowWidget(),
-        CenterWidget(),
-        TextWidget(),
-        IconWidget(),
-        CirlcleAvatarWidget(),
-        //ImageWidget(), 
-        CardWidget(), 
-        ParamsWidget(),
-      ]
+    return SingleChildScrollView(   //pour scroller si on dépasse
+      scrollDirection: Axis.vertical,   //Par défaut
+      child: Column(
+        children: <Widget> [
+          ContainerWidget(),
+          ColumnWidget(),
+          RowWidget(),
+          Divider(),
+          BoxDecorWidget(),
+          Divider(),
+          ExpandedWidget(),
+          CenterWidget(),
+          IconWidget(),
+          CirlcleAvatarWidget(),
+          Row(children: [ColumnWidget(),Expanded(child: RowWidget())],),
+          SpacerWidget(),
+          StackWidget(),
+          ImageWidget(), 
+          Row(children: [CenterWidget(),IconWidget(),CirlcleAvatarWidget(),],),
+          TextWidget(),
+          CardWidget(), 
+          DividerWidget(),
+          ParamsWidget(),
+        ]
+      )
     );
   }
 }
-//---------------------------   Container, Center, Row, Column ----------------------------------
+//---------------------------   Gestion Postion ----------------------------------
 class ContainerWidget extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
@@ -132,10 +144,10 @@ class ColumnWidget extends StatelessWidget{
       mainAxisAlignment: MainAxisAlignment.start,   //Optionel//memes valeurs que le flex
       crossAxisAlignment: CrossAxisAlignment.start, //Optionel//memes valeurs que le flex
       children: <Widget> [
-        Text("Text1"),
-        Text("Text2"),
-        Text("Text3"),
-        Text("Text4"),
+        Text("Col1"),
+        Text("Col2"),
+        Text("Col3"),
+        Text("Col4"),
       ]
     );
   }
@@ -145,13 +157,30 @@ class RowWidget extends StatelessWidget{
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,   
-      mainAxisAlignment: MainAxisAlignment.end,   //Optionel//memes valeurs que le flex
+      mainAxisAlignment: MainAxisAlignment.center,   //Optionel//memes valeurs que le flex
       crossAxisAlignment: CrossAxisAlignment.start, //Optionel//memes valeurs que le flex
       children: <Widget> [
-        Text("Text1"),
-        Text("Text2"),
-        Text("Text3"),
-        Text("Text4"),
+        Text("Row1"),
+        Text("Row2"),
+        Text("Row3"),
+        Text("Row4"),
+      ]
+    );
+  }
+}
+class StackWidget extends StatelessWidget{  //Empile les uns sur les autres
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.topCenter,
+      children: <Widget> [
+        Image.asset("images/02.jpg", height: 200),
+        CircleAvatar(radius: 50, backgroundColor: Colors.yellow),
+        Text("Stack"),
+        Padding(
+          padding: EdgeInsets.only(top: 50, right: 40),
+          child: Text("+padding"),
+        )
       ]
     );
   }
@@ -159,14 +188,81 @@ class RowWidget extends StatelessWidget{
 
 //Astuce pour mieux gerer l'espace
 //Par exemple quand 2 en flex le 1ere a gauche et le 2nd centre sur la place qu'il reste
-class ExpandedWidget extends StatelessWidget{
+class ExpandedWidget extends StatelessWidget{//Permet d'étendre 1 widget pour aligner 
   @override
   Widget build(BuildContext context) {
-    return Expanded( //Permet d'étendre 1 widget pour aligner 
-      child: ContainerWidget(),
+    return Container(
+     color: Colors.red,
+     padding: EdgeInsets.all(5),
+      child: Column(
+        children: [
+          Text("Je veux texte au centre de l'espace restant laissé par l'image"),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Image.asset("images/02.jpg", height: 50),
+              Text("sans expanded", textAlign: TextAlign.center)
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Image.asset("images/02.jpg", height: 50),
+              Expanded(child: Text("avec expanded", textAlign: TextAlign.center))
+            ],
+          ),
+        ],
+      )   
     );
   }
 }
+
+class DividerWidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+     return Column(
+      children: <Widget> [
+        Divider(),
+        Divider(
+          color: Colors.red,
+          height: 10, //a moitie pertinent
+          thickness: 2, //epaisseur
+          indent: 30, //décalage pour pas toucher le bord au début
+          endIndent: 50,  //décalage pour pas toucher le bord a la fin
+        ),
+      ]
+    );
+  }
+} 
+class SpacerWidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start, //Optionel//memes valeurs que le flex
+      children: <Widget> [
+        Icon(Icons.brightness_2),
+        Icon(Icons.brightness_7_sharp),
+        Spacer(),
+        Text("Mon texte à droite grace au spacer"),
+      ]
+    );
+  }
+}
+class ScrollWidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        SingleChildScrollView(
+          child: Column(),
+        )
+      ],
+    );
+  }
+}
+
 //---------------------------   Text  ----------------------------------
 class TextWidget extends StatelessWidget{
   @override
@@ -273,10 +369,22 @@ class ImageWidget extends StatelessWidget{
 class CirlcleAvatarWidget extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: 40,
-      bac
-   );
+    return Row(
+      children: [
+        CircleAvatar(
+          radius: 40,
+          backgroundColor: Colors.yellow,
+          foregroundColor: Colors.green,
+          foregroundImage: AssetImage("images/03.jpg"),
+        ),
+        CircleAvatar(
+          radius: 40,
+          backgroundColor: Colors.yellow,
+          foregroundColor: Colors.green,
+          foregroundImage: NetworkImage("https://images.pexels.com/photos/1373100/pexels-photo-1373100.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"),
+        )
+      ],
+    );    
   }
 }
 //---------------------------   Card && Padding ----------------------------------
@@ -319,6 +427,38 @@ class PaddingWidget extends StatelessWidget{
     padding: EdgeInsets.all(10),
     child: ContainerWidget(),
    );
+  }
+}
+
+//---------------------------   Box Décorations  ----------------------------------
+class BoxDecorWidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 200,
+      width: MediaQuery.of(context).size.width,
+      margin: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        //  Image
+        image: DecorationImage(
+          image: AssetImage("images/02.jpg"),
+          fit: BoxFit.cover
+        ),
+        //  Ombre
+        boxShadow: [
+          BoxShadow(
+            color: Colors.yellow,
+            offset: Offset(3, 3),  //décalage horizontal puis vertical
+            blurRadius: 2,  //Floute l'ombre
+            spreadRadius: 5,//Etale l'ombre
+          ),
+        ],
+        //  Angles
+        //shape: BoxShape.circle, //Change la forme de la décoration
+        borderRadius: BorderRadius.all(Radius.circular(15)), //Arrondi les angles
+      ),
+      child: Text("Box Décoration"),
+    );
   }
 }
 //---------------------------   Avec Parametres  ----------------------------------
@@ -369,15 +509,6 @@ class navBarWidget extends StatelessWidget{
    );
   }
 }
-//-----------------------------   Expanded  ------------------------------------------------
-//-----------------------------   CircleAvatar  ------------------------------------------------
-//-----------------------------   ImageProvider  ------------------------------------------------
-//-----------------------------   Stack  ------------------------------------------------
-//-----------------------------   Divider  ------------------------------------------------
-//-----------------------------   Spacer  ------------------------------------------------
-//-----------------------------   SingleChildScrollView  -------------------------------------
-//-----------------------------   BoxDécoration  ------------------------------------------------
-
 
 //-----------------------------   Généric  ------------------------------------------------
 //-----------------------------   Généric  ------------------------------------------------
