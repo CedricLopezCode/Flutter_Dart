@@ -1,5 +1,8 @@
 
+import 'package:exo_facebook/style_titre_section.dart';
+import 'package:exo_facebook/titre_prenom.dart';
 
+import 'post.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,9 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Facebook Brut',
+      title: 'Facebook Amelior',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       home: Squelette(),
     );
@@ -23,8 +26,9 @@ class MyApp extends StatelessWidget {
 class Squelette extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Post postViaClass = Post(name: "Cécé", time: "3 min", imagePath: "images/Spyre1.jpg", desc: "descripotion") ;
     return Scaffold(
-      appBar: AppBar(title: Text("Facebook")),
+      appBar: AppBar(title: Text("Facebook Amélioration")),
       body: PagePersoWidget(),
     );
   }
@@ -32,6 +36,7 @@ class Squelette extends StatelessWidget {
 
 //-----------------------------------------  Contenu   ----------------------------------------------------
 class PagePersoWidget extends StatelessWidget{
+  
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -41,6 +46,7 @@ class PagePersoWidget extends StatelessWidget{
           InfosWidget(),
           AmisWidget(),
           PostWidget(),
+          PostClassWidget(),
         ],
       )
     );   
@@ -54,13 +60,15 @@ class HeaderWidget extends StatelessWidget{
     return Column(
       children: [
         HeaderimagesWidget(),
+        /* Modif class
         Text(
           "Cédric Lopez",
           style: TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
           ),
-        ),
+        ),*/
+        TitrePrenom(titrePrenom: "Cédric "),
         Text(
           '''Chimiste en reconversion dans le développement informatique.
           Il faut bien un peu de texte pour remplir...''',
@@ -145,6 +153,7 @@ class InfosWidget extends StatelessWidget{
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text("A propos de moi", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),),
+        StyleTitreSection("A propos de moi"), //Version avec classe
         Row(children: [
           Icon(Icons.home),
           Text("Grenoble, France")
@@ -171,6 +180,7 @@ class AmisWidget extends StatelessWidget{
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text("Amis", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),),
+        StyleTitreSection("Amis"), //Version avec classe
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -209,10 +219,6 @@ class PostWidget extends StatelessWidget{
     return Column(
       children: [
         UnPostWidget(), 
-        UnPostWidget(),
-        UnPostWidget(),
-        UnPostWidget(),
-        UnPostWidget(),
         UnPostWidget(),
         Text("post"),
         Divider(),
@@ -270,6 +276,85 @@ class LePostWidget extends StatelessWidget{
   }
 }
 class LikeCommPostWidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Icon(Icons.favorite),
+        Text("150 likes"),
+        Icon(Icons.comment),
+        Text("12 commentaires"),
+      ],
+    );
+  }
+}
+//-----------------------------------  Post Amélioré via classe    ----------------------------------------------------
+class PostClassWidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text("Début Classe"),
+        UnPostClassWidget(), 
+        UnPostClassWidget(),
+        UnPostClassWidget(),
+        Text("Fin Classe"),
+        Divider(),
+      ],
+    );
+  }
+}
+class UnPostClassWidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 3),
+      color: Colors.grey.shade300,
+      padding: EdgeInsets.all(5),
+      child: Column(
+        children: [
+          InfoPostClassWidget(),
+          LePostClassWidget(),
+          LikeCommPostClassWidget(),
+        ],
+      )
+    );
+  }
+}
+class InfoPostClassWidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        CircleAvatar(radius: 20, foregroundImage: AssetImage("images/03.jpg"),),
+        Text("Cédric Lopez"),
+        Spacer(),
+        Text("Il y a "),
+      ],
+    );
+  }
+}
+class LePostClassWidget extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          height: 200,
+          margin: EdgeInsets.symmetric(vertical: 5),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("images/05.jpg"),
+            ),
+          ),
+        ),
+        Text("La Description de l'image parce que sur les réseaux sociaux on met toujours une description meme si c'est redondant !!!"),
+      ],
+    );
+  }
+}
+class LikeCommPostClassWidget extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Row(

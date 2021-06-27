@@ -169,3 +169,59 @@ nomEtAgev2();//Je suis Paul et j'ai 12
 
 
 } //Fin Main
+//  ---------------------------------------------  Classes   ---------------------------------------------
+//   Les constructeurs:
+class TableV1{  //Classique
+  int pied = 4;  double? hauteur;  double? longueur;  double? largeur;  String matiere = "Bois";
+  
+  TableV1(int pied, double hauteur, double longueur, double largeur, String matiere){
+    this.pied = pied; this.hauteur = hauteur; this.longueur = longueur; this.largeur = largeur; this.matiere = matiere;
+  }
+}
+class TableV2{  //Rapide  
+  int pied = 4;  double? hauteur;  double longueur;  double largeur;  String matiere = "Bois";
+  //plus besoin du ? not nullable car oblige de donner les params
+
+  TableV2(this.pied, this.hauteur, this.longueur, this.largeur, this.matiere);
+}
+class TableV3{  //Comme Maps => Nom des attributs à l'instanciation
+  int pied;  double? hauteur;  double? longueur;  double? largeur;  String matiere;
+  //le défault est déplacé des attributs vers le constructeur
+  TableV3({this.pied = 4, this.hauteur, this.longueur, this.largeur, this.matiere = "Bois"});
+}
+//instanciassion différente: comme une Map aveec les noms en brut plus seulement les valeurs
+//TableV3 table = TableV3(pied: 1, matiere: "Or");
+class TableV4{  //Atribut required
+  int pied;  double hauteur;  double longueur;  double largeur;  String matiere;
+  //Aucune valeur par défaut et aucun not nullable
+  TableV4({required this.pied, required this.hauteur, required this.longueur, required this.largeur, required this.matiere});
+  //instanciassion Explicite et complete obligatoire
+//TableV4 table = TableV4(pied: 1, hauteur: 150, largeur: 100, longueur: 200, matiere: "Or");
+}
+//  Héritage
+class TableEte extends TableV4{
+  String parasol;
+
+// Généralité: 
+//TableEte({required this.parasol,super.attributs}) : super(key: value);
+  TableEte({required this.parasol, required int pied, required double hauteur, required double longueur, required double largeur, required String matiere}) : super (pied: pied, hauteur: hauteur, largeur: largeur, longueur: longueur, matiere: matiere);
+ //instanciassion Explicite et complete obligatoire
+//TableEte ete = TableEte(parasol: "Tranquille", pied: 1, hauteur: 150, largeur: 100, longueur: 200, matiere: "Or");
+void glander(){print("Tranquille");}
+}
+//  ---------------------------------------------  Enum   ---------------------------------------------
+class TableEteEnum extends TableV4{
+  String parasol;
+  TypeDeTable type;
+
+  TableEteEnum({required this.type, required this.parasol, required int pied, required double hauteur, required double longueur, required double largeur, required String matiere}) : super (pied: pied, hauteur: hauteur, largeur: largeur, longueur: longueur, matiere: matiere);
+  void glander(){print("Tranquille");}
+  void checkType(){print(type);}
+
+//TableEteEnum enumer = TableEte(type: TypeDeTable.Jardin, parasol: "Tranquille", pied: 1, hauteur: 150, largeur: 100, longueur: 200, matiere: "Or");
+}
+enum TypeDeTable{
+  Jardin, Salon, Manger
+}
+
+
