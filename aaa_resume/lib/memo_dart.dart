@@ -223,5 +223,24 @@ class TableEteEnum extends TableV4{
 enum TypeDeTable{
   Jardin, Salon, Manger
 }
+//  ---------------------------------------------  Private   ---------------------------------------------
+class TableV5{  //Atribut required
+  int _pied =0;   // _ == private  //Valeur par défzut obligatoire pour pas avoir d'erreur
+  double hauteur;  double longueur;  double largeur;  String matiere; 
+
+  //private implique de modifier le constructeur car pas possible de mettre des _ dans le constructeur: 
+  //-lui mettre une valeur par défaut sans required ni this mis avec le type
+  //-rajouter le {this.attibuts} apres la map 
+  
+  TableV5({int pied = 0, 
+  required this.hauteur, required this.longueur, required this.largeur, required this.matiere})//Pas de ;
+  {this._pied = pied;}
+
+  int get pied => _pied;  //pas besoin de taper le get pour y acceder le nom de la var suffit: table.pied
+  set pied(int newPied){_pied = newPied;}
+  //set pied(int newPied){if(newPied != 0){_pied = newPied;}}// peut faire une vérif avant de changer
+ 
+}
+
 
 
