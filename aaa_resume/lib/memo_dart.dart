@@ -23,6 +23,14 @@ citation.toLowerCase();
 //Spécifique au num
 unInt ~/ unDouble; //renvoie la partie entiere de la division
 unInt % unDouble; //renvoie le reste de la division entiere
+unDouble.toStringAsFixed(3);  //Limite à 3 chiffre après la virgule
+unDouble.round(); //Arondi pour plus avoir trop de chiffre
+unDouble.floor(); //Arondi inférieur
+unDouble.ceil(); //Arondi supérieur
+unDouble.truncate(); //Avant la virgule
+unDouble.isNaN; //bool de si c'est un nombre
+unDouble.isNegative; //bool de si c'est négatif
+unDouble.sign; //-1 si neg, 0 , +1 si pos
 //  Changement de Type
 int toInt = int.parse(stringNombre);
 String toString = unDouble.toString();
