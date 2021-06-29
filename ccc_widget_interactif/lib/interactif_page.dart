@@ -26,17 +26,21 @@ class InteractifPageState extends State<InteractifPage>{      //Quoi faire quand
   String textFieldRentre = "";  //Text field
   late TextEditingController monController; //Text Control 
   //late enleve l'erreur du null car il ne le sera pas apres puisque à l'init
+  String valeurSelect = "Pierre";  //Select: DropDown Button
+  List<String> valeursSelect = ["Pierre", "Paul", "Jacques"];  //Select: DropDown Button
   List<bool> valeurSwitch = [false, true, false];  //Switch
   List<bool> valeurCheckBox = [false, true, false];  //Checkbox
   int groupeRadio = 1;  //Radio
   List<double> valeurSliders = [0, 10, 50]; //Slider
+  DateTime dateInitiale = DateTime.now(); //Picker Date
+  DateTime dateSelected = DateTime.utc(2020, 12, 16); //Picker Date
+  TimeOfDay heureInitiale = TimeOfDay.now(); //Picker Time
+  TimeOfDay heureSelected = TimeOfDay.now(); //Picker Time
 
   @override
   void initState() {    //A la création
     super.initState();
     monController = TextEditingController();// apres le super
-    
-
   }
 
   @override
@@ -52,7 +56,69 @@ class InteractifPageState extends State<InteractifPage>{      //Quoi faire quand
       appBar: AppBar(title: Text("WIdgets Interactifs"),),
       body: SingleChildScrollView( 
       child: Column(children: [
-        
+      Center(child: Text("Les Boutons !!!",style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 20),)),
+      //----------------------------------   TextButton == Bouton plat  -----------------------------------------
+        Row(children: [
+          TextButton(
+            onPressed: changEtatTextButton, 
+            onLongPress: changEtatTextButtonLong, 
+            child: Text("Text Button  ")
+          ),
+          Text(majText()),
+          Text(longText()),
+        ],),
+      //----------------------------------   OutlinedButton == Bouton pourtour -----------------------------------------
+        Row(children: [
+          OutlinedButton(
+            onPressed: changEtatOutlinedButton, 
+            onLongPress: changEtatOutlinedButtonLong, 
+            child: Text("Outlined Button"),
+            style: OutlinedButton.styleFrom(
+              
+            )
+          ),
+          Text(majOutlined()),
+          Text(longOutlined()),
+        ],),
+      //----------------------------------   ElevatedButton == en hauteur  -----------------------------------------
+        Row(children: [
+          ElevatedButton(
+            onPressed: changEtatElevatedButton, 
+            onLongPress: changEtatElevatedButtonLong, 
+            child: Text("Elevated Button"),
+          ),
+          Text(majEleve()),
+          Text(longEleve()),
+        ],),
+        Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+        ElevatedButton(
+          onPressed: changEtatElevatedButton, 
+          onLongPress: changEtatElevatedButtonLong, 
+          child: Text("Elevated Button"),
+          style: ElevatedButton.styleFrom(
+            primary: Colors.green,  //fond
+            onPrimary: Colors.yellow, //texte
+            elevation: 5,
+            shadowColor: Colors.red, 
+          ),
+        ),
+      //----------------------------------   FloatingActionButton  -----------------------------------------
+        FloatingActionButton( //Dans le Scaffold, body
+          onPressed: updateColor, // pas besoin des parenthese
+          child: Icon(Icons.remove_red_eye_outlined),
+           backgroundColor: Colors.deepOrange,
+        ),
+      //----------------------------------   IconActionButton  -----------------------------------------
+        IconButton(
+          onPressed: changEtatIconButton,
+          icon: Icon(iconBouton),
+          color: Colors.blue, //mais pas de background possible
+          iconSize: 50,
+          splashRadius: 60, //aire autour du bouton
+          splashColor: Colors.red, 
+        ),
+
+      ],),
       //------------------------------------------------------------------------------------------------
       Divider(),//------------------------------------------------------------------------------------
       //---------------------------------------------------------------------------------------------
@@ -80,6 +146,11 @@ class InteractifPageState extends State<InteractifPage>{      //Quoi faire quand
         //onSubmitted: (newText) {setState(() {textFieldcontrol = newText;});},
       ),
       Text(monController.text),
+      //----------------------------------   Select  ----------------------------
+      /*
+      DropdownButton<String>(items: valeursSelect),
+     */
+      Text(textFieldRentre),
       //----------------------------------   Switch  -----------------------------------------
       Row(children: [
         Switch(
@@ -141,8 +212,35 @@ class InteractifPageState extends State<InteractifPage>{      //Quoi faire quand
         ),
         listeRadio(5),
         Text("$groupeRadio"),
+        /*
+        RadioListTile<SingingCharacter>(
+        title: const Text('Lafayette'),
+        value: SingingCharacter.lafayette,
+        groupValue: _character,
+        onChanged: (SingingCharacter? value) { setState(() { _character = value; }); },
+      ),
+        */
       ],),
-      //----------------------------------   DatePicker  -----------------------------------------
+      //----------------------------------   Calendrier  -----------------------------------------
+      Row(children: [
+        ElevatedButton(
+          child: Icon(Icons.calendar_today),
+          onPressed: (() => montrerCalendrier(context)),
+        ),
+        Text(dateSelected.toString()),
+        Text("Le ${dateSelected.weekday} ${dateSelected.day}/${dateSelected.month}/${dateSelected.year} à ${dateSelected.hour} h ${dateSelected.minute}"),
+      ],),
+      
+      //----------------------------------   Horloge  -----------------------------------------
+      Row(children: [
+        ElevatedButton(
+          child: Icon(Icons.watch),
+          onPressed: (() => montrerHorloge(context)),
+        ),
+        Text(heureSelected.toString()),
+        Text("A ${heureSelected.hour}h ${heureSelected.minute} min "),
+      ],),
+      
       //----------------------------------   Slider  -----------------------------------------
         Slider(
           value: valeurSliders[0], 
@@ -165,60 +263,6 @@ class InteractifPageState extends State<InteractifPage>{      //Quoi faire quand
           inactiveColor: Colors.yellow,
         ),
         Text("$valeurSliders"),
-      Center(child: Text("Les Boutons !!!",style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 20),)),
-      //----------------------------------   TextButton == Bouton plat  -----------------------------------------
-        Row(children: [
-          TextButton(
-            onPressed: changEtatTextButton, 
-            onLongPress: changEtatTextButtonLong, 
-            child: Text("Text Button  ")
-          ),
-          Text(majText()),
-          Text(longText()),
-        ],),
-      //----------------------------------   OutlinedButton == Bouton pourtour -----------------------------------------
-        Row(children: [
-          OutlinedButton(
-            onPressed: changEtatOutlinedButton, 
-            onLongPress: changEtatOutlinedButtonLong, 
-            child: Text("Outlined Button"),
-            style: OutlinedButton.styleFrom(
-              
-            )
-          ),
-          Text(majOutlined()),
-          Text(longOutlined()),
-        ],),
-      //----------------------------------   ElevatedButton == en hauteur  -----------------------------------------
-        Row(children: [
-          ElevatedButton(
-            onPressed: changEtatElevatedButton, 
-            onLongPress: changEtatElevatedButtonLong, 
-            child: Text("Elevated Button"),
-          ),
-          Text(majEleve()),
-          Text(longEleve()),
-        ],),
-        ElevatedButton(
-          onPressed: changEtatElevatedButton, 
-          onLongPress: changEtatElevatedButtonLong, 
-          child: Text("Elevated Button"),
-          style: ElevatedButton.styleFrom(
-            primary: Colors.green,  //fond
-            onPrimary: Colors.yellow, //texte
-            elevation: 5,
-            shadowColor: Colors.red, 
-          ),
-        ),
-      //----------------------------------   IconActionButton  -----------------------------------------
-        IconButton(
-          onPressed: changEtatIconButton,
-          icon: Icon(iconBouton),
-          color: Colors.blue, //mais pas de background possible
-          iconSize: 50,
-          splashRadius: 60, //aire autour du bouton
-          splashColor: Colors.red, 
-        ),
       ],),
       ),
       //----------------------------------   FloatingActionButton  -----------------------------------------
@@ -312,6 +356,29 @@ class InteractifPageState extends State<InteractifPage>{      //Quoi faire quand
     return Row(children: allRadio,);
   }
   //----------------------------------   DatePicker  -----------------------------------------
+  /*void*/ montrerCalendrier(BuildContext context){
+    showDatePicker(context: context, 
+      initialDate: dateInitiale, 
+      firstDate: DateTime(1980), 
+      lastDate: DateTime(2050), 
+    ).then((value) =>  setState(() => dateSelected = value ?? dateInitiale));
+  }
+  /*void montrerHorloge(BuildContext context){
+    showTimePicker(context: context, 
+      initialTime: dateInitiale.,
+    )
+  }*/
+  //----------------------------------   TimePicker  -----------------------------------------
+  /*void*/ montrerHorloge(BuildContext context){
+    showTimePicker(context: context, 
+      initialTime: heureInitiale
+    ).then((value) =>  setState(() => heureSelected = value ?? heureInitiale));
+  }
+  /*void montrerHorloge(BuildContext context){
+    showTimePicker(context: context, 
+      initialTime: dateInitiale.,
+    )
+  }*/
 
 }//Fin Widget interactif
 

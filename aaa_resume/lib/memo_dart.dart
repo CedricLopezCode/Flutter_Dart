@@ -14,8 +14,11 @@ sur plusieurs lignes
 ''';
 String stringNombre = "43";
 bool unBoolean = true;
+DateTime dateMaintenant = DateTime.now();
+DateTime unDate = DateTime.utc(2020, 12, 16); 
+DateTime bisDate = DateTime.parse("1969-07-20 20:18:04Z");
 dynamic unDynamic = 1;
-unDynamic = "Change de type en foonction";
+unDynamic = "Change de type en fonction";
 
 //  Spécifique au String
 unString.toUpperCase();
@@ -233,7 +236,7 @@ enum TypeDeTable{
 }
 //  ---------------------------------------------  Private   ---------------------------------------------
 class TableV5{  //Atribut required
-  int _pied =0;   // _ == private  //Valeur par défzut obligatoire pour pas avoir d'erreur
+  int _pied = 0;   // _ == private  //Valeur par défzut obligatoire pour pas avoir d'erreur
   double hauteur;  double longueur;  double largeur;  String matiere; 
 
   //private implique de modifier le constructeur car pas possible de mettre des _ dans le constructeur: 

@@ -30,6 +30,7 @@ class Squelette extends StatelessWidget {
   }
 }
 
+
 //-----------------------------------------  Contenu   ----------------------------------------------------
 class PagePersoWidget extends StatelessWidget{
   @override
