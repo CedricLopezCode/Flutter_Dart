@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 
-class AppBar extends StatefulWidget{
-  const AppBar({Key ? key}) : super(key : key);
+class AppBarTop extends StatefulWidget{
+  const AppBarTop({Key ? key}) : super(key : key);
 
   @override
-  State<AppBar> createState() => _AppBarState();
+  State<AppBarTop> createState() => _AppBarTopState();
 }
 
-class _AppBarState extends State<AppBar>{
+class _AppBarTopState extends State<AppBarTop>{
 @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
-
-/*
-appBar: AppBar( //Tout est optionnel  //Ordre automatique 
+    return AppBar( //Tout est optionnel  //Ordre automatique 
         title: Text("Mon titre"),
         centerTitle: true,
         leading: Icon(Icons.star),// == logo  toujours à gauche
@@ -25,6 +20,7 @@ appBar: AppBar( //Tout est optionnel  //Ordre automatique
           Icon(Icons.border_color),
           Icon(Icons.add),
         ],
+        
         flexibleSpace: Text("FlexibleSpace"), //apparait dans la barre des tache avec les icones android
         elevation: 7.5,
         shadowColor: Colors.green,
@@ -35,6 +31,9 @@ appBar: AppBar( //Tout est optionnel  //Ordre automatique
         /*
         Comment utiliser ???: foregroundColor, bottom, shape(relation avec shadow), textTheme, titleTextStyle
         Pas compris l'utilité : automaticallyImplyLeading,  
-      ),
-        */*/
+        */
+    );
+  }
 }
+
+

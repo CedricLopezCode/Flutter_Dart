@@ -5,6 +5,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:aaa_resume/appbar.dart';
 import 'package:aaa_resume/bottom_navbar.dart';
 
 void main() {runApp(MyApp());}
@@ -32,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("context"),),
+      appBar: AppBar(),
       body: Center(child: Text("Widget Contenu Page")),
       bottomNavigationBar: BottomNavBar(),
     );

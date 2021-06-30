@@ -36,6 +36,7 @@ class InteractifPageState extends State<InteractifPage>{      //Quoi faire quand
   DateTime dateSelected = DateTime.utc(2020, 12, 16); //Picker Date
   TimeOfDay heureInitiale = TimeOfDay.now(); //Picker Time
   TimeOfDay heureSelected = TimeOfDay.now(); //Picker Time
+  
 
   @override
   void initState() {    //A la création
