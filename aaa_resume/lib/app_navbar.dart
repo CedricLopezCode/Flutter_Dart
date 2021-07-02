@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AppBarTop extends StatefulWidget{
-  const AppBarTop({Key ? key}) : super(key : key);
+class AppNavBar extends StatefulWidget{
+  const AppNavBar({Key ? key}) : super(key : key);
 
   @override
-  State<AppBarTop> createState() => _AppBarTopState();
+  State<AppNavBar> createState() => _AppNavBarState();
 }
 
-class _AppBarTopState extends State<AppBarTop>{
+class _AppNavBarState extends State<AppNavBar>{
 @override
   Widget build(BuildContext context) {
     return AppBar( //Tout est optionnel  //Ordre automatique 

@@ -2,9 +2,10 @@ class Profil {
   String prenom;
   String nom;
   int age;
-  int taille;
+  double taille;
   Genre genre;
-  Map<String, bool> hobbies;  
+  //Map<String, bool> hobbies;  
+  List<String> hobbies;  
   String langagePref;
   String unSecret;
  
@@ -20,14 +21,15 @@ class Profil {
   });//fin constructeur
 
 String adjGenre() => (this.genre == Genre.Homme ? "Masculin" : "Féminin");
+bool hommeOuPas() => (this.genre == Genre.Homme ? true : false);
 String stringHobbies() { //hobbyOne; //hobbyTo;  //hobbyStro;
   String stringHobby = "";
-  this.hobbies.forEach((nomHobby, vrai) {
-   stringHobby+= (vrai) ? " $nomHobby," : "";
-  });
+  /*this.hobbies.forEach((nomHobby, vrai) {
+   stringHobby+= (vrai) ? " $nomHobby, " : "";
+  });*/
+  this.hobbies.forEach((nomHobby) {stringHobby +=  " $nomHobby, ";});
   return stringHobby;
 }
-
 
 }
 enum Genre{Homme, Femme}

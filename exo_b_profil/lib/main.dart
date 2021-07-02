@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Exo Profil'),
     );
   }
 }
@@ -36,18 +36,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
+
  
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            
-            PageProfil(),
-          ],
-        ),
+      body: SingleChildScrollView(
+        child: PageProfil()
       ),
     );
   }

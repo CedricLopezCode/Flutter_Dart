@@ -1,57 +1,51 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
+class PageGenerique extends StatefulWidget{
+  PageGeneriqueState createState () => PageGeneriqueState();
+
 }
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Exo Profil',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
+class PageGeneriqueState extends State<PageGenerique>{
+  
+  //Les const et var
  
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
 
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-    );
+  @override
+  void initState() {
+    super.initState();
+    //à l'init
+  }
+  @override
+  void dispose() {
+    //a la destruction
+    super.dispose();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        children: [
+          Divider(color: Colors.blue, thickness: 2,),
+          bloc1(),
+          Divider(color: Colors.blue, thickness: 2,),
+          bloc2(),
+          Divider(color: Colors.blue, thickness: 2,),
+          bloc3(),
+          Divider(color: Colors.blue, thickness: 2,),
+          bloc4(),
+          Divider(color: Colors.blue, thickness: 2,),
+        ],
+      )
+    ;//fin return
+  }
+  Container bloc1() {
+    return Container(color: Colors.blue, width: 300, height: 100, child: Text("Bloc 1"),);
+  }
+  Container bloc2() {
+    return Container(color: Colors.green, width: 300, height: 200, child: Text("Bloc 2"),);
+  }
+  Container bloc3() {
+    return Container(color: Colors.red, width: 300, height: 100, child: Text("Bloc 3"),);
+  }
+  Container bloc4() {
+    return Container(color: Colors.yellow, width: 300, height: 100, child: Text("Bloc 4"),);
   }
 }

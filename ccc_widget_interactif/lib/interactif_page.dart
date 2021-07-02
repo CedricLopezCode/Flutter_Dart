@@ -56,7 +56,7 @@ class InteractifPageState extends State<InteractifPage>{      //Quoi faire quand
       backgroundColor: backgroundColor,
       appBar: AppBar(title: Text("WIdgets Interactifs"),),
       body: SingleChildScrollView( 
-      child: Column(children: [
+        child: Column(children: [
       Center(child: Text("Les Boutons !!!",style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 20),)),
       //----------------------------------   TextButton == Bouton plat  -----------------------------------------
         Row(children: [
@@ -192,6 +192,37 @@ class InteractifPageState extends State<InteractifPage>{      //Quoi faire quand
           checkColor: Colors.yellow,  //couleur de la croix quand checked
           hoverColor: Colors.red,  // ????
         ),
+        Row(children: [
+          Icon(Icons.hourglass_bottom),
+          Text('Animate Slowly'),
+          Checkbox(
+            value: valeurCheckBox[2], 
+            onChanged: ((changCheckbox) => setState(() => valeurCheckBox[2] = changCheckbox ?? false)),
+            activeColor: Colors.green,  //couleur de la case quand checked
+            checkColor: Colors.yellow,  //couleur de la croix quand checked
+            hoverColor: Colors.red,  // ????
+          ),
+        ],),
+/*
+        Checkbox(
+          value: valeurCheckBox[2], 
+          onChanged: ((changCheckbox) => setState(() => valeurCheckBox[2] = changCheckbox ?? false)), 
+          //Pour enlever l'erreur de l'optionnel on met une valeur par défaut 
+          activeColor: Colors.green,  //couleur de la case quand checked
+          checkColor: Colors.yellow,  //couleur de la croix quand checked
+          hoverColor: Colors.red,  // ????
+        ),
+        */
+        /* 
+        Expanded(
+          child: CheckboxListTile(
+            title: const Text('Animate Slowly'),
+            value: valeurCheckBox[2],
+            onChanged: ((changCheckbox) => setState(() => valeurCheckBox[2] = changCheckbox !)),
+            //secondary: Icon(Icons.hourglass_empty),
+          ),
+        ),
+        */
         /*
         CheckboxListTile( //Pour inclure text et/ou image directement dans la checkbox
           value: valeurCheckBox[2], 
@@ -257,7 +288,7 @@ class InteractifPageState extends State<InteractifPage>{      //Quoi faire quand
           value: valeurSliders[2], 
           min: 0,
           max: 100,
-          divisions: 3, //ne peut prendre que ces valeurs là //m3 segments donc 4 valeurs
+          divisions: 3, //ne peut prendre que ces valeurs là // 3 segments donc 4 valeurs
           label: valeurSliders[2].round().toStringAsFixed(2), //apparait au dessus quand on appuie
           onChanged: ((changSlider) => setState(() => valeurSliders[2] = changSlider)),
           activeColor: Colors.red,

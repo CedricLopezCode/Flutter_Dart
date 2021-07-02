@@ -173,7 +173,8 @@ class RowWidget extends StatelessWidget{
 class StackWidget extends StatelessWidget{  //Empile les uns sur les autres
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Column(children: [
+    Stack(
       alignment: Alignment.topCenter,
       children: <Widget> [
         Image.asset("images/02.jpg", height: 200),
@@ -184,7 +185,26 @@ class StackWidget extends StatelessWidget{  //Empile les uns sur les autres
           child: Text("+padding"),
         )
       ]
-    );
+    ),
+    Stack(  //Avec Positionned //Positionned ne marche que dans une stack
+      children: <Widget> [
+        Positioned.fill( //Pour que ça remplisse la stack
+          child: Image.asset("images/02.jpg", height: 200),),
+        Positioned(
+          top: 20,
+          left: 200,
+          child: CircleAvatar(radius: 50, backgroundColor: Colors.yellow),
+        ),
+        Text("Stack"),
+        Positioned(
+          top: 20,
+          left: 200,
+          child: Text("positionned sans padding"),
+        ),
+      ]
+    ),
+
+    ],);
   }
 }
 
@@ -220,6 +240,7 @@ class ExpandedWidget extends StatelessWidget{//Permet d'étendre 1 widget pour a
     );
   }
 }
+
 
 class DividerWidget extends StatelessWidget{
   @override
