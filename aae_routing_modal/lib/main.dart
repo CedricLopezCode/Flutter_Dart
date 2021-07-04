@@ -34,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar( //Tout est optionnel  //Ordre automatique 
-          title: Text("Ajouter package"),
+          title: Text("Routing et Modal"),
           backgroundColor: Colors.red,
       ),
       body: SingleChildScrollView(

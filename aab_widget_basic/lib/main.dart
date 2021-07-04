@@ -93,7 +93,7 @@ class Contenu extends StatelessWidget{
       child: Column(
         children: <Widget> [
           Text("tittr"),
-          //ListeWidget(),
+          ListeWidget(),
           ContainerWidget(),
           ColumnWidget(),
           RowWidget(),
