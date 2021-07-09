@@ -29,16 +29,17 @@ class LesSwitchState extends State<LesSwitch>{
           inactiveTrackColor: Colors.yellow,  //barre
           hoverColor: Colors.black,    //?????
         ),
-       /*
-        SwitchListTile( //Pour inclure text et/ou image directement dans le switch
+       
+        
+        Text("$valeurSwitch"),
+      ],),
+      //Pas dans une row car prend toute la largeur !!!
+        SwitchListTile( //Pour inclure text et/ou image directement dans le switch 
           title: Text("SwitchListTile"),
           value: valeurSwitch[2], 
           onChanged: ((changSwitch) => setState(() => valeurSwitch[2] = changSwitch)),
           secondary: Icon(Icons.hourglass_top_rounded),
         ),
-        */
-        Text("$valeurSwitch"),
-      ],),
         ],
       )
     ;//fin return

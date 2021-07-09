@@ -23,6 +23,17 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  image_picker: ^0.8.1+3
+  webfeed: ^0.7.0
+  shared_preferences: ^2.0.6
+  location: ^4.3.0
+  geocode: ^1.0.1
+  html: ^0.15.0
+  sqflite: ^2.0.0+3
+  path_provider: ^2.0.2
+  adaptive_theme: ^2.2.0
+  flutter_launcher_icons: ^0.9.0
+  url_launcher: ^6.0.9
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -32,11 +43,13 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  image_picker: ^0.8.1+3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
+flutter_icons:
+  image_path: "images/logo_metroid.png"
+  android: "launcher_icon"
+  ios: true
 # The following section is specific to Flutter.
 flutter:
 
@@ -51,6 +64,7 @@ flutter:
     - images/03.jpg
     - images/04.jpg
     - images/05.jpg
+    - images/logo_metroid.png
     - images/Trace1.jpg
     - images/Kanden1.jpg
     - images/Noxus1.jpg
@@ -58,6 +72,30 @@ flutter:
     - images/Sylux1.jpg
     - images/Trace1.jpg
     - images/Weawel1.jpg
+    - images/assets_quizz/belgique.jpg
+    - images/assets_quizz/buche.jpg
+    - images/assets_quizz/commodore.jpg
+    - images/assets_quizz/cover.jpg
+    - images/assets_quizz/eagle.jpg
+    - images/assets_quizz/faux.jpg
+    - images/assets_quizz/lune.jpg
+    - images/assets_quizz/nyctalope.jpg
+    - images/assets_quizz/pharaon.jpg
+    - images/assets_quizz/pirate.png
+    - images/assets_quizz/russie.jpg
+    - images/assets_quizz/tintin.jpg
+    - images/assets_quizz/vrai.jpg
+    - images/assets_meteo/d1.jpg
+    - images/assets_meteo/d2.jpg
+    - images/assets_meteo/n.jpg
+    - images/assets_meteo/01.png
+    - images/assets_meteo/02.png
+    - images/assets_meteo/03.png
+    - images/assets_meteo/04.png
+    - images/assets_meteo/09.png
+    - images/assets_meteo/10.png
+    - images/assets_meteo/11.png
+    - images/assets_meteo/50.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -70,7 +108,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  fonts:
+    - family: MyFlutterApp
+      fonts:
+        - asset: flutter-icons-meteo\fonts\MyFlutterApp.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

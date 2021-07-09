@@ -47,6 +47,10 @@ class LeTexteState extends State<LeTexte>{
         
         Divider(),
 
+        SelectableText("Selectable text"),
+
+        Divider(),
+
         Text.rich( //plusieurs styles dans 1 seul texte
           TextSpan(
             text: "Texte riche: Texte principal",

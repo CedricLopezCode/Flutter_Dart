@@ -32,12 +32,6 @@ class _MyHomePageState extends State<MyHomePage> {
   /*var vingt = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   var pi = 3.14;*/
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,5 +75,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ), 
       ), 
     );
+  }
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
   }
 }

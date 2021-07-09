@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:aaa_memo/menu/bottom_navbar.dart';
+import 'package:aaa_memo/cette_app/bottom_navbar.dart';
 import 'package:aaa_memo/modalRouting/page_routing_modal.dart';
 
 void main() {

@@ -19,6 +19,19 @@ class LeRoutingState extends State<LeRouting>{
           Row(mainAxisSize: MainAxisSize.max, mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             boutonChangPage(),
           ],),
+          Divider(),
+          GestureDetector(
+            onTap: (){
+              final autrePage = PageAlternative(couleur: Colors.yellow);
+              Navigator.of(context).push(
+              MaterialPageRoute(builder: (BuildContext ctx) => autrePage)
+            ); },
+            child: Hero(
+              tag: "hero", 
+              child: CircleAvatar(backgroundImage: AssetImage("images/02.jpg"),)
+            ),
+          )
+          
         ],
       )
     ;//fin return

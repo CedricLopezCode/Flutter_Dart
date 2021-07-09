@@ -17,6 +17,8 @@ class LaStackState extends State<LaStack>{
           Divider(color: Colors.blue, thickness: 2,),
           stackRelative(),
           Divider(color: Colors.blue, thickness: 2,),
+          Opacity(opacity: 0.3, child: stackRelative()),
+          Divider(color: Colors.blue, thickness: 2,),
           stackAbsolue(),
           Divider(color: Colors.blue, thickness: 2,),
           dansConteneur(),

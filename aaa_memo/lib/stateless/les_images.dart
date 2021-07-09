@@ -35,6 +35,23 @@ class LesImagesState extends State<LesImages>{
           Text("Image network"),
           Image.network("https://images.pexels.com/photos/1373100/pexels-photo-1373100.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"),
           
+          Divider(color: Colors.blue, thickness: 2,),//ppas compris le fonctionnement !!!
+          Text("Avec ratio", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red,),),
+           AspectRatio(
+              aspectRatio: 9/1,
+              child: Image.asset("images/02.jpg"),
+            ),/*
+          Row(children: [
+            AspectRatio(
+              aspectRatio: 3/2,
+              child: Image.asset("images/02.jpg"),
+            ),
+            AspectRatio(
+              aspectRatio: 5/1,
+              child: Image.asset("images/02.jpg"),
+            ),
+          ],),*/
+          
           Divider(color: Colors.blue, thickness: 2,),
           Text("Plusieurs images avec parametres: 2 dimensions", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red,),),
           Text("sans fit: prend la 1ère dimension atteinte et garde le ratio"),

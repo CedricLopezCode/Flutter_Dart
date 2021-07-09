@@ -28,7 +28,16 @@ class PageAlternativeState extends State<PageAlternative>{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Page Alternative"), backgroundColor: widget.couleur,),
-      body: Center(child: Text("Page Alternative"),),
+      body: Center(child: Column(children: [
+        Text("Page Alternative"),
+        Divider(),
+        Hero(
+          tag: "hero", 
+          child: Image.asset("images/02.jpg")
+        )
+
+      ],)
+      ),
     );
   }
   

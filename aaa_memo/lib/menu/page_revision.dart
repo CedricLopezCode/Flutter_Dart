@@ -1,5 +1,5 @@
 
-import 'package:aaa_memo/menu/page_menu.dart';
+import 'package:aaa_memo/cette_app/page_menu.dart';
 import 'package:flutter/material.dart';
 
 class PageRevision extends StatefulWidget {
@@ -41,7 +41,7 @@ class PageRevisionState extends State<PageRevision> {
     List<Widget> lesBoutons = [];
     listeDeListe[0].forEach((nomMenus) {
       ElevatedButton unBouton = ElevatedButton(
-        onPressed: () => pageMenuD(listeDeListe[listeDeListe[0].indexOf(nomMenus)+1]), 
+        onPressed: () => pageMenuD(nomMenus.toString(), listeDeListe[listeDeListe[0].indexOf(nomMenus)+1]), 
         child: Text(nomMenus),
       );
       lesBoutons.add(unBouton);
@@ -51,10 +51,10 @@ class PageRevisionState extends State<PageRevision> {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
     );
   }
-  pageMenuD(List<String> listeMenus){
+  pageMenuD(String titreMenu, List<String> listeMenus){
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (BuildContext ctx) => PageMenu(menusAAfficher: listeMenus,)
+        builder: (BuildContext ctx) => PageMenu(titreMenu: titreMenu, menusAAfficher: listeMenus)
       ),
     );
   }

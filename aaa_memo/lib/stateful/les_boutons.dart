@@ -18,7 +18,9 @@ class LesBoutonsState extends State<LesBoutons>{
   bool eleveButtonAppuyelong = false; //Elevated Button
   IconData iconBouton = Icons.thumb_up_alt; //Icon Button
   String valeurDropDown = "ccc"; //Select DropDown
-  List<String> possibleDropDown = ["aaa", "bbb", "ccc", "ddd", "eee"];
+  List<String> possibleDropDown = ["aaa", "bbb", "ccc", "ddd", "eee"]; //Select DropDown
+  bool inkwellAppuye = false; // Inkwell
+  bool isVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -110,9 +112,33 @@ class LesBoutonsState extends State<LesBoutons>{
           ),
           Text(valeurDropDown),
         ],),
+      //----------------------------------   Inkwell (Rendre stateless clickable)  -----------------------------------------
+        Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          InkWell(
+            onTap: (() => setState(() => inkwellAppuye = !inkwellAppuye)),
+            child: Container(
+              child: Text("Mon Container avec texte deviens clickable"),
+              color: Colors.blue,
+              height: 30,
+            ), 
+          ),
+          Text("$inkwellAppuye"),
+        ],),
+        //----------------------------------   Visibility  -----------------------------------------
+        Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          ElevatedButton(
+            onPressed: (() => setState(() => isVisible = !isVisible)),
+            child: Text("Visibility change"),
+          ),
+          Visibility(
+            visible: isVisible,
+            child: Text("La Visibilité est true"),
+          )
+          
+        ],),
+          
         
-        ],
-      )
+      ],)
     ;//fin return
   }
   

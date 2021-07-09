@@ -39,7 +39,7 @@ class PageQuestionState extends State<PageQuestion>{
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                   ),
                   Image.asset(
-                    "assets_quizz/${datasQuestion.listeQuestions[indexQuestion].imagePath}", 
+                    "images/assets_quizz/${datasQuestion.listeQuestions[indexQuestion].imagePath}", 
                     height: 270, 
                     fit: BoxFit.cover,
                   ),
@@ -78,7 +78,7 @@ class PageQuestionState extends State<PageQuestion>{
       children: [
       Text(correct ? "C'est Gagné !!!" :"Raté !"),
       Image.asset(
-        correct ? "assets_quizz/vrai.jpg":"assets_quizz/faux.jpg" , 
+        correct ? "images/assets_quizz/vrai.jpg":"images/assets_quizz/faux.jpg" , 
         //height: 270, 
         //fit: BoxFit.cover,
       ),
